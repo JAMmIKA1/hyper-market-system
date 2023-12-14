@@ -19,28 +19,24 @@ public class InventoryEmployee extends Person {
     counter++;
   }
 
-  public static void updateUsername(String oldUsername, String newUsername) {
-    for (InventoryEmployee employee : data) {
-      if (employee == null) {
-        continue;
-      }
-      if (employee.getUsername().equals(oldUsername)) {
-        employee.updateUsername(newUsername);
-        break;
-      }
+  public InventoryEmployee updateUsername(String username) {
+    if (search(username) != null) {
+      return null;
     }
+    this.username = username;
+    return this;
   }
 
-  public static void updatePassword(String username, String newPassword) {
+  public static InventoryEmployee search(String username) {
     for (InventoryEmployee employee : data) {
       if (employee == null) {
         continue;
       }
       if (employee.getUsername().equals(username)) {
-        employee.updatePassword(newPassword);
-        break;
+        return employee;
       }
     }
+    return null;
   }
 
   public static int quantity() {

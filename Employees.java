@@ -32,7 +32,6 @@ public class Employees {
 
     Integer[] num = { adminLastId, marktingLastId, inventoryLastId, sellerLastId};
     int max = Collections.max(Arrays.asList(num));
-    System.out.println(max);
     Person.counterId = max;
   }
 

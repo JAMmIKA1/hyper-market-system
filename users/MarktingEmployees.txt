@@ -1,8 +1,4 @@
-4, ahmoood, 1122
-2, dd, 34
+4, ahmad, 1122
+2, axe, 34
 7, jkl, ff
-8, add, 423
-10, jkl, ff
-11, add, 423
-13, jkl, ff
-14, add, 423
+8, ade, 423

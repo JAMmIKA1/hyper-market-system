@@ -22,10 +22,6 @@ public abstract class Person {
     this.id = id;
   }
 
-  public void updateUsername(String username) {
-    this.username = username;
-  }
-
   public void updatePassword(String password) {
     this.password = password;
   }
