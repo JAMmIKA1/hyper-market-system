@@ -13,6 +13,12 @@ public class MarktingEmployee extends Person {
     counter++;
   }
 
+  public MarktingEmployee(int id, String username, String password) {
+    super(id, username, password);
+    type = "markting";
+    counter++;
+  }
+
   public static void updateUsername(String oldUsername, String newUsername) {
     for (MarktingEmployee employee : data) {
       if (employee == null) {

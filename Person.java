@@ -4,7 +4,7 @@ package hypermarketsystem;
  * Person Class.
  */
 public abstract class Person {
-  protected static int counterId = 0;
+  public static int counterId = 0;
   protected String username;
   protected String password;
   protected String type;
@@ -14,6 +14,12 @@ public abstract class Person {
     this.username = username;
     this.password = password;
     this.id = ++counterId;
+  }
+
+  public Person(int id, String username, String password) {
+    this.username = username;
+    this.password = password;
+    this.id = id;
   }
 
   public void updateUsername(String username) {

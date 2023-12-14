@@ -1,9 +1,10 @@
 package hypermarketsystem;
 
-import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -12,11 +13,36 @@ import java.util.Scanner;
 public class Employees {
 
   public static void flushData() {
-    AdminUser.query();
-    Markting.query();
-    Inventory.query();
-    SellerMan.query();
+    Admin[] admins = AdminUser.query();
+    MarktingEmployee[] marktings = Markting.query();
+    InventoryEmployee[] inventories = Inventory.query();
+    Seller[] sellers = SellerMan.query();
+
+    int adminLastId = (Admin.quantity() != 0)
+        ? (admins[Admin.quantity() - 1].getId()) : (0);
+
+    int marktingLastId = (MarktingEmployee.quantity() != 0)
+        ? (marktings[MarktingEmployee.quantity() - 1].getId()) : (0);
+
+    int inventoryLastId = (InventoryEmployee.quantity() != 0)
+        ? (inventories[InventoryEmployee.quantity() - 1].getId()) : (0);
+
+    int sellerLastId = (Seller.quantity() != 0)
+        ? (sellers[Seller.quantity() - 1].getId()) : (0);
+
+    Integer[] num = { adminLastId, marktingLastId, inventoryLastId, sellerLastId};
+    int max = Collections.max(Arrays.asList(num));
+    System.out.println(max);
+    Person.counterId = max;
   }
+
+  public static void commit_all() {
+    AdminUser.commit();
+    Markting.commit();
+    Inventory.commit();
+    SellerMan.commit();
+  }
+
   public class Inventory {
     public static InventoryEmployee[] query() {
       InventoryEmployee[] employees = new InventoryEmployee[100];
@@ -29,7 +55,8 @@ public class Employees {
         int counter = 0;
         while (reader.hasNextLine()) {
           String[] userinfo = reader.nextLine().split(",\\s*");
-          employees[counter++] = new InventoryEmployee(userinfo[0], userinfo[1]);
+          int id = Integer.valueOf(userinfo[0]);
+          employees[counter++] = new InventoryEmployee(id, userinfo[1], userinfo[2]);
         }
         reader.close();
       } catch (IOException e) {
@@ -45,7 +72,7 @@ public class Employees {
           if (employee == null) {
             continue;
           }
-          writer.append(employee.getUsername() + ", " + employee.getPassword() + '\n');
+          writer.append(employee.getId() + ", " + employee.getUsername() + ", " + employee.getPassword() + '\n');
         }
         writer.close();
       } catch (IOException e) {
@@ -66,7 +93,8 @@ public class Employees {
         int counter = 0;
         while (reader.hasNextLine()) {
           String[] userinfo = reader.nextLine().split(",\\s*");
-          employees[counter++] = new MarktingEmployee(userinfo[0], userinfo[1]);
+          int id = Integer.valueOf(userinfo[0]);
+          employees[counter++] = new MarktingEmployee(id, userinfo[1], userinfo[2]);
         }
         reader.close();
       } catch (IOException e) {
@@ -82,7 +110,7 @@ public class Employees {
           if (employee == null) {
             continue;
           }
-          writer.append(employee.getUsername() + ", " + employee.getPassword() + '\n');
+          writer.append(employee.getId() + ", " + employee.getUsername() + ", " + employee.getPassword() + '\n');
         }
         writer.close();
       } catch (IOException e) {
@@ -103,7 +131,8 @@ public class Employees {
         int counter = 0;
         while (reader.hasNextLine()) {
           String[] userinfo = reader.nextLine().split(",\\s*");
-          employees[counter++] = new Seller(userinfo[0], userinfo[1]);
+          int id = Integer.valueOf(userinfo[0]);
+          employees[counter++] = new Seller(id, userinfo[1], userinfo[2]);
         }
         reader.close();
       } catch (IOException e) {
@@ -119,7 +148,7 @@ public class Employees {
           if (employee == null) {
             continue;
           }
-          writer.append(employee.getUsername() + ", " + employee.getPassword() + '\n');
+          writer.append(employee.getId() + ", " + employee.getUsername() + ", " + employee.getPassword() + '\n');
         }
         writer.close();
       } catch (IOException e) {
@@ -140,7 +169,8 @@ public class Employees {
         int counter = 0;
         while (reader.hasNextLine()) {
           String[] userinfo = reader.nextLine().split(",\\s*");
-          employees[counter++] = new Admin(userinfo[0], userinfo[1]);
+          int id = Integer.valueOf(userinfo[0]);
+          employees[counter++] = new Admin(id, userinfo[1], userinfo[2]);
         }
         reader.close();
       } catch (IOException e) {
@@ -156,7 +186,7 @@ public class Employees {
           if (employee == null) {
             continue;
           }
-          writer.append(employee.getUsername() + ", " + employee.getPassword() + '\n');
+          writer.append(employee.getId() + ", " + employee.getUsername() + ", " + employee.getPassword() + '\n');
         }
         writer.close();
       } catch (IOException e) {

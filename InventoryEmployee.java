@@ -13,6 +13,12 @@ public class InventoryEmployee extends Person {
     counter++;
   }
 
+  public InventoryEmployee(int id, String username, String password) {
+    super(id, username, password);
+    type = "inventory";
+    counter++;
+  }
+
   public static void updateUsername(String oldUsername, String newUsername) {
     for (InventoryEmployee employee : data) {
       if (employee == null) {

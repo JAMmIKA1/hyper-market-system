@@ -1,7 +1,5 @@
 package hypermarketsystem;
 
-import hypermarketsystem.Employees.Markting;
-
 /**
  * Main file.
  */
@@ -10,7 +8,8 @@ public class Main {
     Employees.flushData();
 
     Admin admin = new Admin("admin", "stone");
-
-    Employees.Markting.commit();
+    admin.addMarktingEmployee("jkl", "ff");
+    admin.addMarktingEmployee("add", "423");
+    Employees.commit_all();
   }
 }

@@ -13,6 +13,12 @@ public class Seller extends Person {
     counter++;
   }
 
+  public Seller(int id, String username, String password) {
+    super(id, username, password);
+    type = "seller";
+    counter++;
+  }
+
   public static void updateUsername(String oldUsername, String newUsername) {
     for (Seller employee : data) {
       if (employee == null) {
