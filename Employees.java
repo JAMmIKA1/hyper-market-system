@@ -11,6 +11,12 @@ import java.util.Scanner;
  */
 public class Employees {
 
+  public static void flushData() {
+    AdminUser.query();
+    Markting.query();
+    Inventory.query();
+    SellerMan.query();
+  }
   public class Inventory {
     public static InventoryEmployee[] query() {
       InventoryEmployee[] employees = new InventoryEmployee[100];

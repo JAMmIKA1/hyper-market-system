@@ -11,30 +11,6 @@ public class Admin extends Person {
     type = "admin";
   }
   
-  public static void updateUsername(String oldUsername, String newUsername) {
-    for (Admin employee : data) {
-      if (employee == null) {
-        break;
-      }
-      if (employee.getUsername().equals(oldUsername)) {
-        employee.updateUsername(newUsername);
-        break;
-      }
-    }
-  }
-
-  public static void updatePassword(String username, String newPassword) {
-    for (Admin employee : data) {
-      if (employee == null) {
-        break;
-      }
-      if (employee.getUsername().equals(username)) {
-        employee.updatePassword(newPassword);
-        break;
-      }
-    }
-  }
-
   public InventoryEmployee addInventoryEmployee(String username, String password) {
     int quantity = InventoryEmployee.quantity();
     InventoryEmployee.data[quantity] = new InventoryEmployee(username, password);
