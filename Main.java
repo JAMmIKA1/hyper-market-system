@@ -6,6 +6,7 @@ package hypermarketsystem;
 public class Main {
   public static void main(String[] args) {
     Employees.flushData();
+    HyperData.flushData();
 
     // MarktingEmployee target = MarktingEmployee.search("dd");
     // if (target == null) {
@@ -17,9 +18,12 @@ public class Main {
     // }
 
     boolean notvalid = true;
+    char choice;
+    Person result;
     do {
-      Person result = null;
-      switch (Menus.loginType()) {
+      result = null;
+      choice = Menus.loginType();
+      switch (choice) {
         case '1':
           result = Menus.adminLogin();
           break;
@@ -42,12 +46,27 @@ public class Main {
       }
       if (result != null) {
         notvalid = false;
-      }
-      else {
-          System.out.println("\nInvalid email or password!\n");
+      } else {
+        System.out.println("\nInvalid email or password!\n");
       }
     } while (notvalid);
-    System.out.println("Welcome back!");
+
+    switch (choice) {
+      case '1':
+        Menus.adminMenu(result.getUsername());
+        break;
+      case '2':
+        Menus.inventoryMenu(result.getUsername());
+        break;
+      case '3':
+        Menus.marktingMenu(result.getUsername());
+        break;
+      case '4':
+        Menus.sellerMenu(result.getUsername());
+        break;
+      default:
+        System.exit(0);
+    }
     Employees.commit_all();
   }
 }

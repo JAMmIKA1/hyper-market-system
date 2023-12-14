@@ -1,3 +1,4 @@
 #!/usr/bin/sh
 
-exec javac -d . *.java
+rm -rf ./hypermarketsystem/
+javac -d . *.java
