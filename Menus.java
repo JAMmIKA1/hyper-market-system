@@ -6,10 +6,11 @@ import java.util.Scanner;
  * Menus.
  */
 public class Menus {
+  private static Scanner userInput = new Scanner(System.in);
+
   /**
    * login as loop menu.
    */
-  private static Scanner userInput = new Scanner(System.in);
   public static char loginType() {
 
     System.out.println("--* Login as *--");
